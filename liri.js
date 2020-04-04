@@ -46,16 +46,23 @@ function spotifySong(input1) {
         id: process.env.SPOTIFY_ID,
         secret: process.env.SPOTIFY_SECRET});
 
-    spotify.search({ type: "track", query: input1}, function (err, data) {
+    spotify.search({ type: "track", limit: 1, query: input1}, function (err, data) {
+        
         if (err) {
             return console.log(err);
         }
-        console.log(data.tracks.items);
-        // var artist = data.tracks.artists.name;
-        // var song = data.tracks.name;
-        // var link = data.tracks.uri;
+        console.log(data.tracks);
+        var artist = data.tracks.items[0].artists;
+        var song = data.tracks.items[0].name;
+        var link = data.tracks.items[0].href;
         // var album = data.tracks.album.name;
-        // console.log(artist);
+        console.log("Song Name: " + song);
+        console.log("Preview link of the song from spotify " + link);
+        for (var i = 0; i < 2; i++){
+            var artists = artist[i];
+            console.log("Artists " + artists);
+        }
+        // console.log("Artists " + data.tracks.items[0].artists[0]);
     })
 }
 function movieOutput(input1) {
