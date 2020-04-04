@@ -1,10 +1,10 @@
 require("dotenv").config();
 var keys = require("./keys.js");
-var spotify = require("node-spotify-api");
+var Spotify = require("node-spotify-api");
 var fs = require("fs");
 var op1 = process.argv[2];
 var input1 = process.argv[3];
-var inputAll = process.argv.slice(2).join(" ");
+var inputAll = process.argv.slice(3).join(" ");
 var moment = require("moment");
 moment().format();
 var axios = require("axios");
@@ -12,13 +12,13 @@ if(op1 == "concert-this") {
     bandinTown(input1);
 }
 if(op1 == "spotify-this-song") {
-    spotifySong(inputAll);
+    spotifySong(input1);
 }
 if(op1 == "movie-this") {
-    movieOutput(inputAll);
+    movieOutput(input1);
 }
 if(op1 == "do-what-it-says") {
-    simonSays(inputAll);
+    simonSays();
 }
 function bandinTown(input1) {
     axios.get("https://rest.bandsintown.com/artists/" + input1 + "/events?app_id=codingbootcamp").then(
@@ -41,6 +41,50 @@ function bandinTown(input1) {
         .catch(function(error) {
         })
 }
-function spotifySong(inputAll) {
+function spotifySong(input1) {
+    var spotify = new Spotify({
+        id: process.env.SPOTIFY_ID,
+        secret: process.env.SPOTIFY_SECRET});
 
+    spotify.search({ type: "track", query: input1}, function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(data.tracks.items);
+        // var artist = data.tracks.artists.name;
+        // var song = data.tracks.name;
+        // var link = data.tracks.uri;
+        // var album = data.tracks.album.name;
+        // console.log(artist);
+    })
+}
+function movieOutput(input1) {
+    var queryUrl = "http://www.omdbapi.com/?t=" + input1 + "&y=&plot=short&apikey=trilogy";
+    axios.get(queryUrl).then(
+        function(response) {
+          console.log("Release Year: " + response.data.Title);
+          console.log("Movie title " + response.data.Title);
+          console.log("Year the movie came out " + response.data.Year);
+          console.log("Rating: " + response.data.imdbRating);
+          console.log("Language of the movie: " + response.data.Language);
+          console.log("Plot of the movie " + response.data.Plot);
+          console.log("Actors: " + response.data.Actors);
+        })
+        .catch(function(error) {
+            if (error.response) {
+              
+              console.log("---------------Data---------------");
+              console.log(error.response.data);
+             
+            }
+        })
+}
+function simonSays(){
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if(error) {
+            return console.log(error);
+        }
+        var dataArry = data.split(",");
+        console.log(dataArry);
+    })
 }
