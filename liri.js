@@ -51,20 +51,21 @@ function spotifySong(input1) {
         if (err) {
             return console.log(err);
         }
-        console.log(data.tracks);
+        console.log(JSON.stringify(data, null, 2));
         var artist = data.tracks.items[0].artists;
         var song = data.tracks.items[0].name;
         var link = data.tracks.items[0].href;
         // var album = data.tracks.album.name;
-        console.log("Song Name: " + song);
-        console.log("Preview link of the song from spotify " + link);
-        for (var i = 0; i < 2; i++){
-            var artists = artist[i];
-            console.log("Artists " + artists);
-        }
-        // console.log("Artists " + data.tracks.items[0].artists[0]);
-    })
-}
+        data.tracks.items.forEach(function(track, index) {
+            ;
+          
+            console.log("Song Name: " + song);
+            console.log("Preview link of the song from spotify " + link);
+            console.log("Artists " + track.artists[0].name);
+            console.log("The album that the song is from " + track.album.name);
+        });
+    });
+};
 function movieOutput(input1) {
     var queryUrl = "http://www.omdbapi.com/?t=" + input1 + "&y=&plot=short&apikey=trilogy";
     axios.get(queryUrl).then(
