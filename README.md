@@ -36,6 +36,16 @@ These are the command lines that will return data back to the user.
     * Rotten Tomatoes Rating of the movie
 * node liri.js do-what-it-says
     * This will print the information from the random.txt file.
+## Organization:
+* This app started with installing node packages.
+    * npm init - package.json file
+    * Axios, Spotify, Moment, and others.
+* Creating files 
+    * Main .js file for command inputs to retreive data.
+    * .env file to hold our spotify key which is hidden, and a file to export the key to the main Node file.
+    * Package.json file that holds various node packages, and metadata relevant to this project.
+* Requiring the node packages, and the exported spotify key.
+* if statements that take in the argument in the command line that users input.
 
 ## Technologies used:
 * Javascript
