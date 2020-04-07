@@ -16,16 +16,21 @@ These are the command lines that will return data back to the user.
 * Type in the command: "npm install" This will install packages that this app has used from the package.json file.
 * Now that the packages are installed, run the following command lines in the terminal and the following information will be output to the terminal.
 ### Outcome for each command line:
-* node liri.js concert-this “artist/band name”
+* node liri.js concert-this <artist/band name>
     * Name of venue
     * Venue location
     * Date of the event in MM/DD/YYYY format
-* node liri.js spotify-this-song “song/track name”
+
+
+    ![](/images/concert2.png)
+* node liri.js spotify-this-song <song/track name>
     * Artist
     * Song
     * Spotify song preview url
     * Album
-* node liri.js movie-this “movie title”
+
+    ![](/images/spotify2.png)
+* node liri.js movie-this <movie title>
     * Title of the movie
     * Year the movie came out
     * IMDB Rating of the movie
@@ -34,8 +39,14 @@ These are the command lines that will return data back to the user.
     * Plot of the movie
     * Actors in the movie
     * Rotten Tomatoes Rating of the movie
+
+    ![](/images/movie2.png)
+
 * node liri.js do-what-it-says
     * This will print the information from the random.txt file.
+
+    ![](/images/do-what.png)
+
 ## Organization:
 * This app started with installing node packages.
     * npm init - package.json file
