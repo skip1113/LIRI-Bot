@@ -5,6 +5,8 @@
 ## Overview
 This LIRI app is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data that you input.
 In this case when you type in ther terminal Ex: "node liri.js concert-this metallica" the app installed with axios will get data from a api, in this case Bands in town. Instead of having this infomation put on a browser, node will log the information into the terminal.
+
+My role for this app was to write command line tools to be able to run server-side scripts to produce dynamic web page content before the page is sent to the user's web browser.
 ### Command Lines
 These are the command lines that will return data back to the user.
 * node liri.js concert-this
@@ -57,6 +59,7 @@ These are the command lines that will return data back to the user.
     * Package.json file that holds various node packages, and metadata relevant to this project.
 * Requiring the node packages, and the exported spotify key.
 * if statements that take in the argument in the command line that users input.
+    * Takes the specific argument to call the function to return a promise.
 
 ## Technologies used:
 * Javascript
