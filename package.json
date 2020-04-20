@@ -4,7 +4,7 @@
   "description": "",
   "main": "liri.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,11 @@
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "node-spotify-api": "^1.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.3.0"
   }
 }
